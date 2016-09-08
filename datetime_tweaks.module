@@ -24,12 +24,8 @@ function datetime_tweaks_datetime_set_format($element) {
   // Use d/m/Y format.
   $element['date']['#attributes']['data-drupal-date-format'] = ['d/m/Y'];
   $element['date']['#date_date_format'] = 'd/m/Y';
-  $element['date']['#attributes']['title'] = t('Enter a valid date - e.g. @format', [
-    '@format' => (new \DateTime())->format('d/m/Y'),
-  ]);
-  $element['time']['#attributes']['title'] = t('Enter a valid time - e.g. @format', [
-    '@format' => (new \DateTime())->format('h:i'),
-  ]);
+  $element['date']['#attributes']['title'] = (new \DateTime())->format('d/m/Y');
+  $element['time']['#attributes']['title'] = (new \DateTime())->format('h:i');
   // Remove seconds in browsers that support HTML5 type=date.
   $element['time']['#attributes']['step'] = 60;
   $element['#attached']['library'][] = 'datetime_tweaks/default_date';
